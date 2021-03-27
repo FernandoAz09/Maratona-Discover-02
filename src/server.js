@@ -1,15 +1,17 @@
 const express = require("express")
 const server = express()
+const routes = require("./routes")
+
+//TEMPLATE ENGINE
+server.set('view engine', 'ejs')
+
+// Habilitar arquivos estáticos
+server.use(express.static("public"))
+
+// Rotas
+server.use(routes)
 
 
 
-//request(req) //response(res)
-server.get('/', (req,res) => {
-    return res.sendFile(__dirname + "/views/index.html")
-})
-
-
-
-
-
+// Servidor ouvindo a porta 3000 
 server.listen(3000, () => console.log("Servidor RODANDO"))
